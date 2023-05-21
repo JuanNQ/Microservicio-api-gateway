@@ -10,6 +10,8 @@ public interface UsuarioServicio {
     UsuarioEntidad guardarUsuario(UsuarioEntidad usuario);
     UsuarioEntidad obtenerUsuarioforNombre(String nombre);
 
+    Optional<UsuarioEntidad> obtenerUsuarioforNombreV2(String nombre);
+
     UsuarioEntidad obtenerPerfilUsuario(String nombre);
 
     @Transactional

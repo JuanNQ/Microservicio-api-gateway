@@ -16,7 +16,7 @@ import java.util.Set;
 @Builder
 public class UserPrincipal implements UserDetails {
 
-    private Double id;
+    private Long id;
     private String nombre;
     transient private String contrasenia;
     transient private UsuarioEntidad usuario;

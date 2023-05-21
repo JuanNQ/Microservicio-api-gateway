@@ -27,18 +27,28 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 
     @Override
     public UsuarioEntidad guardarUsuario(UsuarioEntidad usuario){
+        System.out.println("usuario: " + usuario);
         usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
         usuario.setRole(Rol.USER);
         UsuarioEntidad userCreated = usuarioRepositorio.save(usuario);
 
         String jwt = jwtProvider.crearToken(userCreated);
         userCreated.setToken(jwt);
+        System.out.println(userCreated);
         return userCreated;
     }
 
     @Override
+    public Optional<UsuarioEntidad> obtenerUsuarioforNombreV2(String nombre){
+        System.out.println(nombre);
+        var usuario= usuarioRepositorio.findByNombre(nombre);
+        System.out.println(usuario);
+        return usuario;
+    }
+
+    @Override
     public UsuarioEntidad obtenerUsuarioforNombre(String nombre){
-        return usuarioRepositorio.findByNombre(nombre).orElseThrow(()-> new UsernameNotFoundException("Usuario no encontrado"));
+        return usuarioRepositorio.findByNombre(nombre).orElseThrow(()-> new UsernameNotFoundException("No existe el usuario"));
     }
 
     @Override

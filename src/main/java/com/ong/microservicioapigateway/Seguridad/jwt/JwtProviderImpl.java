@@ -79,7 +79,7 @@ public class JwtProviderImpl implements JwtProvider{
 
         UserDetails userDetails = UserPrincipal.builder()
                 .nombre(nombre)
-                .id(userId)
+                .id(userId.longValue())
                 .authorities(authorities)
                 .build();
 

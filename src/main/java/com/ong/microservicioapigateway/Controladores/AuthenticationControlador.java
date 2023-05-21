@@ -22,7 +22,9 @@ public class AuthenticationControlador {
 
     @PostMapping("/registrar")
     public ResponseEntity<?> registrarUsuario(@RequestBody UsuarioEntidad usuarioEntidad){
-        if (usuarioServicio.obtenerUsuarioforNombre(usuarioEntidad.getNombre()).equals(null)){
+        System.out.println(usuarioEntidad);
+        if (usuarioServicio.obtenerUsuarioforNombreV2(usuarioEntidad.getNombre()).equals(null)){
+            System.out.println("Nulo");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(usuarioServicio.guardarUsuario(usuarioEntidad),HttpStatus.CREATED);

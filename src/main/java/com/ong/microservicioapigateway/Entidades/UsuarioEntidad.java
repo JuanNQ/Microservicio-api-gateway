@@ -14,7 +14,7 @@ public class UsuarioEntidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Double id;
+    private Long id;
 
     private String nombre;
 
